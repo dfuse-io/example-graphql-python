@@ -35,13 +35,13 @@ def stub():
 
 query = '''
 subscription {
-  searchTransactionsForward(query: "status:executed", limit: 10) {
+  searchTransactionsForward(query: "account:eosio.token receiver:eosio.token action:transfer", limit: 10) {
     trace {
       id
       matchingActions{
         account
         receiver
-        name 
+        name
         json
       }
     }
@@ -53,5 +53,9 @@ dfuse_graphql = stub()
 stream = dfuse_graphql.Execute(Request(query=query))
 
 for rawResult in stream:
-    result = json.loads(rawResult.data)
-    print(result['searchTransactionsForward']['trace']['matchingActions'])
+    if rawResult.errors:
+      print("An error occurred")
+      print(rawResult.errors)
+    else:
+      result = json.loads(rawResult.data)
+      print(result['searchTransactionsForward']['trace']['matchingActions'])
