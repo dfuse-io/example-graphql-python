@@ -18,8 +18,8 @@ in the `requirements.txt` at the root of this project.
 
 #### Quickstart
 
-First of all, visit [https://app.dfuse.io](https://app.dfuse.io) to get
-a free API key for your project.
+First of all, visit [https://dfuse.eosnation.io/](https://dfuse.eosnation.io/) to get
+a free dfuse Community Edition API key for your project.
 
 First, clone this repository to your work folder:
 
@@ -34,8 +34,20 @@ Setup the virtual environment and pull all dependencies:
 ./install_deps.sh
 ```
 
-Once your environment is setup properly, simply run the `example.py` script:
+Once your environment is setup properly, simply run the `main.py` script:
 
 ```bash
-python3 example.py YOUR_API_KEY_HERE
+python3 main.py YOUR_API_KEY_HERE
+```
+
+##### Protobuf
+
+The protocol buffers are already generated, the `generate_proto.sh` is able to regenerate them if needed, it showcases also the command the can be used to generate them back.
+
+The required Protobuf definitions are found at the root projet under `pb`.
+
+To re-generate, simply do:
+
+```bash
+./generate_proto.sh
 ```
